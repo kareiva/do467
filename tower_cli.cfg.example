@@ -1,0 +1,5 @@
+[general]
+host = https://controller.lab.example.com/
+verify_ssl = false
+username = admin
+password = test
