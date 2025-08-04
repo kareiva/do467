@@ -1,0 +1,20 @@
+---
+- name: test awx api
+  hosts: localhost
+
+  vars_files:
+    - users.yml
+
+  tasks:
+    - name: Create users 
+      ansible.controller.user:
+        first_name: "{{ item['first_name'] }}"
+        last_name: "{{ item['last_name'] }}"
+        username: "{{ item['username'] }}"
+        password: "{{ item['password'] }}"
+        auditor: "{{ item['auditor'] }}"
+        superuser: "{{ item['superuser'] }}"
+        email: "{{ item['email'] }}"
+        organization: "{{ item['organization'] }}"
+      loop: "{{ users }}"
+
