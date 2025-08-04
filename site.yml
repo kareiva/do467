@@ -6,6 +6,17 @@
     - users.yml
 
   tasks:
+    - name: check if can do basic things
+      ansible.controller.ad_hoc_command:
+        inventory: Simon inv
+        credential: Demo Credential
+        module_name: command
+        module_args: echo Hallo Welt
+        wait: true
+      register: hallo
+
+    - ansible.builtin.debug: var=hallo
+
     - name: Create users 
       ansible.controller.user:
         first_name: "{{ item['first_name'] }}"
