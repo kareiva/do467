@@ -45,3 +45,12 @@
         inputs:
           username: student
           ssh_key_data: "{{ lookup('file', '~/.ssh/gitlab_rsa') }}"
+
+    - name: Create instructor project
+      ansible.controller.project:
+        name: Instructors
+        description: Project for instructor stuff
+        organization: Default
+        state: present
+        scm_type: git
+        scm_url: 'git@github.com:kareiva/do467.git'
