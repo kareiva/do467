@@ -7,3 +7,5 @@
         wait: false
       register: hallo
 
+    - name: Show ad hoc job status
+      ansible.builtin.debug: var=hallo

@@ -7,84 +7,60 @@
     aap_version: 2.2
 
   vars_files:
-    - users.yml
+    - user_vars.yml
 
   tasks:
+    - ansible.builtin.debug: var=aap_version
+
     - name: check if can do basic things
       ansible.builtin.include_tasks: ad_hoc_command.yml
       register: hallo
       when: debug
-
-    - ansible.builtin.debug: var=hallo
-      when: debug
-
-    - ansible.builtin.debug: var=aap_version
+      tags:
+        - debug
 
     - name: Create dev team
-      ansible.controller.team:
-        name: Instructors
-        description: Course instructors
-        state: present
-        organization: Default
+      ansible.builtin.include_tasks: team.yml
+      tags:
+        - team
 
     - name: Create users 
-      ansible.controller.user:
-        first_name: "{{ item['first_name'] }}"
-        last_name: "{{ item['last_name'] }}"
-        username: "{{ item['username'] }}"
-#        password: "{{ item['password'] }}"
-        auditor: "{{ item['auditor'] }}"
-        superuser: "{{ item['superuser'] }}"
-        email: "{{ item['email'] }}"
-        organization: "{{ item['organization'] }}"
-      loop: "{{ users }}"
+      ansible.builtin.include_tasks: user.yml
+      tags: 
+        - user
 
     - name: Create credential for SCM
-      ansible.controller.credential:
-        name: Automatic SCM credential
-        organization: Default
-        state: present
-        credential_type: Source Control
-        team: Instructors
-        inputs:
-          username: student
-          ssh_key_data: "{{ lookup('file', '~/.ssh/gitlab_rsa') }}"
+      ansible.builtin.include_tasks: credential.yml
+      tags:
+        - credential
 
     - name: Create instructor project
-      ansible.controller.project:
-        name: Instructors
-        description: Project for instructor stuff
-        organization: Default
-        state: present
-        scm_type: git
-        scm_url: 'https://github.com/kareiva/do467.git'
-        wait: true
+      ansible.builtin.include_tasks: project.yml
+      tags:
+        - project
 
     - name: Create instructor inventory
-      ansible.controller.inventory:
-        name: Instructor hosts
-        description: Hosts for instructor use
-        organization: Default
-        state: present
+      ansible.builtin.include_tasks: inventory.yml
+      tags:
+        - inventory
 
     - name: Create host in inventory
-      ansible.controller.host:
-        name: "{{ item }}"
-        description: "Node {{ item }}"
-        inventory: Instructor hosts
-        state: present
-      loop:
-        - servera.lab.example.com
-        - serverb.lab.example.com
-        - serverc.lab.example.com
-        - serverd.lab.example.com
-
+      ansible.builtin.include_tasks: host.yml
+      tags:
+        - host
 
     - name:  Change AAP settings
-      ansible.controller.settings:
-        name: ANSIBLE_FACT_CACHE_TIMEOUT
-        value: 3600
+      ansible.builtin.include_tasks: settings.yml
+      tags:
+        - settings
 
     - name: Create instructor job template
       ansible.builtin.include_tasks: job_template.yml
+      tags:
+        - job_template
+
+    - name: Create schedule for instructor job template
+      ansible.builtin.include_tasks: schedule.yml
+      tags:
+        - schedule
 

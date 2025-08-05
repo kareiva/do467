@@ -1,0 +1,13 @@
+    - name: Create host in inventory
+      tags:
+        - host
+      ansible.controller.host:
+        name: "{{ item }}"
+        description: "Node {{ item }}"
+        inventory: Instructor hosts
+        state: present
+      loop:
+        - servera.lab.example.com
+        - serverb.lab.example.com
+        - serverc.lab.example.com
+        - serverd.lab.example.com

@@ -1,0 +1,8 @@
+    - name: Create instructor inventory
+      tags:
+        - inventory
+      ansible.controller.inventory:
+        name: Instructor hosts
+        description: Hosts for instructor use
+        organization: Default
+        state: present

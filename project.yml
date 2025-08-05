@@ -1,0 +1,11 @@
+    - name: Create instructor project
+      tags:
+        - project
+      ansible.controller.project:
+        name: Instructors
+        description: Project for instructor stuff
+        organization: Default
+        state: present
+        scm_type: git
+        scm_url: 'https://github.com/kareiva/do467.git'
+        wait: true

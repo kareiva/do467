@@ -1,0 +1,12 @@
+- name: Create schedule
+  tags:
+    - schedule
+  ansible.controller.schedule:
+    name: "AWX API demo schedule"
+    state: present
+    unified_job_template: "Ansible Controller API demo"
+    rrule: "DTSTART:20250805T100000Z RRULE:FREQ=WEEKLY;INTERVAL=1;COUNT=1"
+  vars:
+    rrules:
+      - frequency: day
+        every: 2

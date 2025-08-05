@@ -1,0 +1,7 @@
+    - name:  Change AAP settings
+      tags:
+        - settings
+      ansible.controller.settings:
+        name: ANSIBLE_FACT_CACHE_TIMEOUT
+        value: 3600
+

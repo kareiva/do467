@@ -1,0 +1,9 @@
+    - name: Create dev team
+      tags:
+        - team
+      ansible.controller.team:
+        name: Instructors
+        description: Course instructors
+        state: present
+        organization: Default
+
