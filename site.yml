@@ -64,6 +64,18 @@
         organization: Default
         state: present
 
+    - name: Create host in inventory
+      ansible.controller.host:
+        name: "{{ item }}"
+        description: "Node {{ item }}"
+        inventory: Instructor hosts
+        state: present
+      loop:
+        - servera.lab.example.com
+        - serverb.lab.example.com
+        - serverc.lab.example.com
+        - serverd.lab.example.com
+
     - name: Create instructor job template
       ansible.controller.job_template:
         name: Ansible Controller API demo
