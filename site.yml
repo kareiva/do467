@@ -17,6 +17,13 @@
 
     - ansible.builtin.debug: var=hallo
 
+    - name: Create dev team
+      ansible.controller.team:
+        name: Instructors
+        description: Course instructors
+        state: present
+        organization: Default
+
     - name: Create users 
       ansible.controller.user:
         first_name: "{{ item['first_name'] }}"
