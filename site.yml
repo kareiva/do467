@@ -89,4 +89,19 @@
         playbook: site.yml
         project: Instructors
         inventory: "Instructor hosts"
+        survey_enabled: true
+        survey_spec:
+          name: "My Survey"
+          description: "Here it goes"
+          spec:
+            - type: multiplechoice
+              question_name: "What AAP version do you want?"
+              question_description: "Provide AAP version"
+              variable: aap_version
+              required: false
+              choices:
+                - "2.2"
+                - "2.4"
+                - "2.5"
+              default: "2.2"
         state: present
