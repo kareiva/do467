@@ -36,3 +36,12 @@
         organization: "{{ item['organization'] }}"
       loop: "{{ users }}"
 
+    - name: Create credential for SCM
+      ansible.controller.credential:
+        name: Automatic SCM credential
+        organization: Default
+        state: present
+        credential_type: Source Control
+        inputs:
+          username: student
+          ssh_key_data: "{{ lookup('file', '~/.ssh/gitlab_rsa') }}"
