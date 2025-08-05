@@ -1,0 +1,9 @@
+    - name: check if can do basic things
+      ansible.controller.ad_hoc_command:
+        inventory: Demo Inventory
+        credential: Demo Credential
+        module_name: command
+        module_args: echo Hallo Welt
+        wait: false
+      register: hallo
+

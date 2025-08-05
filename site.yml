@@ -2,20 +2,23 @@
 - name: test awx api
   hosts: localhost
 
+  vars:
+    debug: False
+    aap_version: 2.2
+
   vars_files:
     - users.yml
 
   tasks:
     - name: check if can do basic things
-      ansible.controller.ad_hoc_command:
-        inventory: Demo Inventory
-        credential: Demo Credential
-        module_name: command
-        module_args: echo Hallo Welt
-        wait: false
+      ansible.builtin.include_tasks: ad_hoc_command.yml
       register: hallo
+      when: debug
 
     - ansible.builtin.debug: var=hallo
+      when: debug
+
+    - ansible.builtin.debug: var=aap_version
 
     - name: Create dev team
       ansible.controller.team:
