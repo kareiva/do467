@@ -22,5 +22,7 @@
     identifier: node1
     workflow: AAP Workflow Example
     organization: Default
-    success_nodes:
-      - node2
+    approval_node:
+      description: "Repeat ?"
+      name: node1
+      timeout: 3600
