@@ -14,10 +14,9 @@
 
     - name: check if can do basic things
       ansible.builtin.include_tasks: ad_hoc_command.yml
-      register: hallo
-      when: debug
       tags:
         - debug
+        - never
 
     - name: Create dev team
       ansible.builtin.include_tasks: team.yml
