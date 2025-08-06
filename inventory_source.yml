@@ -1,0 +1,12 @@
+    - name: Create instructor inventory source
+      tags:
+        - inventory_source
+      ansible.controller.inventory_source:
+        name: Instructor hosts from project
+        inventory: Instructor hosts 2
+        description: Hosts for instructor use
+        organization: Default
+        state: present
+        source: scm
+        source_path: ./inventory
+        source_project: Instructors

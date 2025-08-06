@@ -43,6 +43,11 @@
       tags:
         - inventory
 
+    - name: Create instructor inventory source
+      ansible.builtin.include_tasks: inventory_source.yml
+      tags:
+        - inventory_source
+
     - name: Create host in inventory
       ansible.builtin.include_tasks: host.yml
       tags:

@@ -6,3 +6,12 @@
         description: Hosts for instructor use
         organization: Default
         state: present
+
+    - name: Create instructor inventory 2
+      tags:
+        - inventory
+      ansible.controller.inventory:
+        name: Instructor hosts 2
+        description: Hosts sourced from a project
+        organization: Default
+        state: present
