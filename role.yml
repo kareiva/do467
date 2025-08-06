@@ -1,0 +1,10 @@
+    - name: Assign simon to team Instructors
+      tags:
+        - role
+      ansible.controller.role:
+        user: simon
+        target_team: Instructors
+        role: member
+        state: present
+        organization: Default
+

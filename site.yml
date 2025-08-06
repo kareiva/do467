@@ -28,6 +28,11 @@
       tags: 
         - user
 
+    - name: Create role
+      ansible.builtin.include_tasks: role.yml
+      tags:
+        - role
+
     - name: Create credential for SCM
       ansible.builtin.include_tasks: credential.yml
       tags:
