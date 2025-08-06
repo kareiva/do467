@@ -15,3 +15,13 @@
         description: Hosts sourced from a project
         organization: Default
         state: present
+
+    - name: Create dynamic inventory
+      tags:
+        - inventory
+      ansible.controller.inventory:
+        name: Instructor dynamic hosts
+        description: Hosts sourced from a project
+        organization: Default
+        state: present
+

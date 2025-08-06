@@ -10,3 +10,25 @@
         source: scm
         source_path: ./inventory
         source_project: Instructors
+
+    - name: Create dynamic inventory source
+      tags:
+        - inventory_source
+      ansible.controller.inventory_source:
+        name: Instructor hosts from dynamic inv
+        inventory: Instructor dynamic hosts
+        description: Hosts for instructor use
+        organization: Default
+        state: present
+        source: scm
+        source_path: ./inventory.py
+        source_project: Instructors
+
+    - name: Update inv source
+      tags:
+        - inventory_source
+      ansible.controller.inventory_source_update:
+        name: Instructor hosts from dynamic inv
+        inventory: Instructor dynamic hosts
+        organization: Default
+
