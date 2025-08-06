@@ -7,14 +7,6 @@
     organization: Default
     state: present
 
-- name: Create node1 in workflow
-  tags:
-    - workflow_job_template
-  ansible.controller.workflow_job_template_node:
-    workflow: AAP Workflow Example
-    identifier: node1
-    unified_job_template: Ansible Controller API demo
-              
 - name: Create node2 in workflow
   tags:
     - workflow_job_template
