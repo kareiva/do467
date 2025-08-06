@@ -1,0 +1,34 @@
+- name: Create workflow job template
+  tags:
+    - workflow_job_template
+  ansible.controller.workflow_job_template:
+    name: AAP Workflow Example
+    inventory: Instructor hosts
+    organization: Default
+    state: present
+
+- name: Create node1 in workflow
+  tags:
+    - workflow_job_template
+  ansible.controller.workflow_job_template_node:
+    workflow: AAP Workflow Example
+    identifier: node1
+    unified_job_template: Ansible Controller API demo
+              
+- name: Create node2 in workflow
+  tags:
+    - workflow_job_template
+  ansible.controller.workflow_job_template_node:
+    workflow: AAP Workflow Example
+    identifier: node2
+    unified_job_template: Ansible Controller API demo
+              
+- name: Link node1 and node2 in workflow
+  tags:
+    - workflow_job_template
+  ansible.controller.workflow_job_template_node:
+    identifier: node1
+    workflow: AAP Workflow Example
+    organization: Default
+    success_nodes:
+      - node2

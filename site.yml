@@ -63,3 +63,8 @@
       tags:
         - schedule
 
+    - name: Create workflow instructor job template
+      ansible.builtin.include_tasks: workflow_job_template.yml
+      tags:
+        - workflow_job_template
+
