@@ -1,0 +1,28 @@
+users:
+- username: sam
+  password: redhat123
+  first_name: Sam
+  last_name: Simons
+  auditor: False
+  superuser: False
+  email: sam@lab.example.com
+  organization: Default
+
+- username: sylvia
+  password: redhat123
+  first_name: Sylvia
+  last_name: Simons
+  auditor: True
+  superuser: False
+  email: sylvia@lab.example.com
+  organization: Default
+
+- username: simon
+  password: redhat123
+  first_name: Simon
+  last_name: Stephens
+  auditor: False
+  superuser: True
+  email: simon@lab.example.com
+  organization: Default
+
