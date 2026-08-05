@@ -6,6 +6,8 @@
     project: Instructors
     inventory: "Instructor hosts"
     survey_enabled: true
+    labels:
+      - simon
     survey_spec:
       name: "My Survey"
       description: "Here it goes"

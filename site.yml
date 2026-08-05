@@ -63,6 +63,11 @@
       tags:
         - settings
 
+    - name: Create instructor labels
+      ansible.builtin.include_tasks: job_labels.yml
+      tags:
+        - job_labels
+
     - name: Create instructor job template
       ansible.builtin.include_tasks: job_template.yml
       tags:

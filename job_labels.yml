@@ -1,0 +1,7 @@
+- name: Create job labels
+  ansible.controller.label:
+    name: "{{ item }}"
+    organization: Default
+  loop:
+    - simon
+    - mittwoch
